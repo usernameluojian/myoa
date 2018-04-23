@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,12 +18,20 @@ public class Message {
 	private int id;
 	private String title;
 	private String content;
-	private int creatorid;
+	@ManyToOne
+	@JoinColumn(name="creatorid")
+	private Employee employee;
 	private Date sendtime;
 	private String receivers;
 	private int level;
 	private int status;
 	private Boolean issent;
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	public int getId() {
 		return id;
 	}
@@ -39,12 +49,6 @@ public class Message {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public int getCreatorid() {
-		return creatorid;
-	}
-	public void setCreatorid(int creatorid) {
-		this.creatorid = creatorid;
 	}
 	public Date getSendtime() {
 		return sendtime;

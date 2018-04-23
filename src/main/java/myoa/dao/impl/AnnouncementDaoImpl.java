@@ -51,6 +51,10 @@ public class AnnouncementDaoImpl implements AnnouncementDao{
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-beans.xml");
 		AnnouncementDao a = ctx.getBean(AnnouncementDao.class);
-		System.out.println(a.findDepartmentId(2).size());
+		
+		for (Announcement ad : a.findDepartmentId(2)) {
+			System.out.println(ad.getTitle());
+		}
+		
 	}
 }

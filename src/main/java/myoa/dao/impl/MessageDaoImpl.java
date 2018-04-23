@@ -29,11 +29,11 @@ public class MessageDaoImpl implements MessageDao{
 	}
 	
 	//获取全部个人邮箱信息
-	public List<Message> findReceiverId(int ReceiverId){
+	public List<Message> findReceiverId(int id){
 		return hibernateTemplate.execute(new HibernateCallback<List<Message>>() {
 			@Override
 			public List<Message> doInHibernate(Session sesion) throws HibernateException, SQLException {
-				SQLQuery sqlquery = sesion.createSQLQuery("SELECT mg.* FROM MessageReception mp,Message mg WHERE mp.`MessageId` = mg.`Id` AND mp.`ReceiverId` = "+ReceiverId+"");
+				SQLQuery sqlquery = sesion.createSQLQuery("SELECT mg.* FROM MessageReception mp,Message mg WHERE mp.`MessageId` = mg.`Id` AND mp.`ReceiverId` = "+id+"");
 				sqlquery.addEntity(Message.class);
 				return sqlquery.list();
 			}
@@ -42,11 +42,11 @@ public class MessageDaoImpl implements MessageDao{
 	}
 	
 	//获取个人邮箱信息其中为未读的邮件
-	public List<Message> findIsRead(int ReceiverId){
+	public List<Message> findIsRead(int id){
 		return hibernateTemplate.execute(new HibernateCallback<List<Message>>() {
 			@Override
 			public List<Message> doInHibernate(Session sesion) throws HibernateException, SQLException {	
-				SQLQuery sqlquery = sesion.createSQLQuery("SELECT mg.* FROM MessageReception mp,Message mg WHERE mp.`MessageId` = mg.`Id` AND mp.`ReceiverId` = "+ReceiverId+" AND mp.`IsRead`= 0");
+				SQLQuery sqlquery = sesion.createSQLQuery("SELECT mg.* FROM MessageReception mp,Message mg WHERE mp.`MessageId` = mg.`Id` AND mp.`ReceiverId` = "+id+" AND mp.`IsRead`= 0");
 				sqlquery.addEntity(Message.class);
 				return sqlquery.list();
 			}
@@ -55,11 +55,11 @@ public class MessageDaoImpl implements MessageDao{
 	}
 	
 	//获取个人邮箱信息其中为重复的邮件
-	public List<Message> findDuplicate(int IsRead){
+	public List<Message> findDuplicate(int id){
 		return hibernateTemplate.execute(new HibernateCallback<List<Message>>() {
 			@Override
 			public List<Message> doInHibernate(Session sesion) throws HibernateException, SQLException {	
-				SQLQuery sqlquery = sesion.createSQLQuery("SELECT mg.* FROM MessageReception mp,Message mg WHERE mp.`MessageId` = mg.`Id` AND mp.`ReceiverId` = 4 AND mg.`Id` IN (SELECT `MessageId` FROM `messagereception` GROUP BY `MessageId`,`ReceiverId` HAVING COUNT(`Id`)>1) GROUP BY `MessageId`,`ReceiverId`");
+				SQLQuery sqlquery = sesion.createSQLQuery("SELECT mg.* FROM MessageReception mp,Message mg WHERE mp.`MessageId` = mg.`Id` AND mp.`ReceiverId` = "+id+" AND mg.`Id` IN (SELECT `MessageId` FROM `messagereception` GROUP BY `MessageId`,`ReceiverId` HAVING COUNT(`Id`)>1) GROUP BY `MessageId`,`ReceiverId`");
 				sqlquery.addEntity(Message.class);
 				return sqlquery.list();
 			}
@@ -74,6 +74,6 @@ public class MessageDaoImpl implements MessageDao{
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-beans.xml");
 		MessageDao d = ctx.getBean(MessageDao.class);
-		System.out.println(d.findId(2).getTitle());
+		System.out.println(d.findReceiverId(4).size());
 	}
 }
