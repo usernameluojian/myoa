@@ -147,7 +147,7 @@
 						  </ul>
 						  <div class="tab-content">
 						    
-						    <div class="tab-pane" id="tab6">
+						    <div class="tab-pane active" id="tab6">
 						      <div class="bs-docs-example">
 					            <table class="table">
 					              <thead>

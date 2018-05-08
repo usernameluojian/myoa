@@ -3,6 +3,7 @@ package myoa.dao;
 import java.util.List;
 
 import myoa.entity.Employee;
+import myoa.entity.Message;
 
 public interface EmployeeDao {
 
@@ -19,4 +20,6 @@ public interface EmployeeDao {
 	public List<Employee> findDepartmentId(int DepartmentId);
 
 	public List<Employee> findAll();
+	
+	public Employee findid(int id);
 }

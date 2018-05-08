@@ -13,6 +13,32 @@
 		<put-attribute name="title" value="唱片主页" />
 		<put-attribute name="main" value="/WEB-INF/jsp/index.jsp" />
 	</definition>
-	
-
+	<definition name="messageInbox" extends="beforeTemplate">
+		<put-attribute name="title" value="唱片主页" />
+		<put-attribute name="main" value="/WEB-INF/jsp/messageInbox.jsp" />
+	</definition>
+	<definition name="zTree" extends="beforeTemplate">
+		<put-attribute name="title" value="唱片主页" />
+		<put-attribute name="main" value="/WEB-INF/jsp/zTree.jsp" />
+	</definition>
+	<definition name="DocmentSave" extends="beforeTemplate">
+		<put-attribute name="title" value="唱片主页" />
+		<put-attribute name="main" value="/WEB-INF/jsp/DocmentSave.jsp" />
+	</definition>
+	<definition name="messagesave" extends="beforeTemplate">
+		<put-attribute name="title" value="唱片主页" />
+		<put-attribute name="main" value="/WEB-INF/jsp/messagesave.jsp" />
+	</definition>
+	<definition name="messagesendingbox" extends="beforeTemplate">
+		<put-attribute name="title" value="唱片主页" />
+		<put-attribute name="main" value="/WEB-INF/jsp/messagesendingbox.jsp" />
+	</definition>
+	<definition name="messagedrafts" extends="beforeTemplate">
+		<put-attribute name="title" value="唱片主页" />
+		<put-attribute name="main" value="/WEB-INF/jsp/messagedrafts.jsp" />
+	</definition>
+	<definition name="Role" extends="beforeTemplate">
+		<put-attribute name="title" value="唱片主页" />
+		<put-attribute name="main" value="/WEB-INF/jsp/Role.jsp" />
+	</definition>
 </tiles-definitions>

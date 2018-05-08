@@ -37,10 +37,11 @@
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping><servlet>
+	</filter-mapping>
+	<servlet>
       <servlet-name>DownLoadServlet</servlet-name>
        <servlet-class>me.gacl.web.controller.DownLoadServlet</servlet-class>
- </servlet>
+ 	</servlet>
   
  <servlet-mapping>
        <servlet-name>DownLoadServlet</servlet-name>

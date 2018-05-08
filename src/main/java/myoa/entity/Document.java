@@ -1,12 +1,16 @@
 package myoa.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="document")
@@ -16,11 +20,21 @@ public class Document {
 	private int id;
 	private String name;
 	private String description;
-	private int creatorid;
 	private Date createtime;
 	private String type;
 	private String fileurl;
 	private int parentid;
+	@ManyToOne
+	@JoinColumn(name="creatorid")
+	private Employee employee;
+	@Transient
+	private List<Document> children;
+	public List<Document> getChildren() {
+		return children;
+	}
+	public void setChildren(List<Document> children) {
+		this.children = children;
+	}
 	public int getId() {
 		return id;
 	}
@@ -39,11 +53,12 @@ public class Document {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getCreatorid() {
-		return creatorid;
+	
+	public Employee getEmployee() {
+		return employee;
 	}
-	public void setCreatorid(int creatorid) {
-		this.creatorid = creatorid;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 	public Date getCreatetime() {
 		return createtime;

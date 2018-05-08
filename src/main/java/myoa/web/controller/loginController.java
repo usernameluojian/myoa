@@ -37,8 +37,9 @@ public class loginController {
 		if(e!=null) {
 			session.setAttribute("user", e);
 			session.setAttribute("function", fb.FunctionisNULL());
+			session.setAttribute("IsNotfunction", fb.FunctionisNotNULL());
 			session.setAttribute("functionRoleId", fb.FunctionRoleId(erb.findeid(e.getId()).getRoleid()));
-			return "redirect:index?id="+e.getId()+"&did="+e.getDepartment().getId();
+			return "redirect:index";
 		}else {
 			return "login";
 		}

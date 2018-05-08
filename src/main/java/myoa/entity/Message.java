@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Message")
@@ -26,6 +27,30 @@ public class Message {
 	private int level;
 	private int status;
 	private Boolean issent;
+	@Transient
+	private Messageattachment mstch;
+	@Transient
+	private int messagereceptionid;
+	@Transient
+	private Boolean messagereceptionIRead;
+	public int getMessagereceptionid() {
+		return messagereceptionid;
+	}
+	public void setMessagereceptionid(int messagereceptionid) {
+		this.messagereceptionid = messagereceptionid;
+	}
+	public Boolean getMessagereceptionIRead() {
+		return messagereceptionIRead;
+	}
+	public void setMessagereceptionIRead(Boolean messagereceptionIRead) {
+		this.messagereceptionIRead = messagereceptionIRead;
+	}
+	public Messageattachment getMstch() {
+		return mstch;
+	}
+	public void setMstch(Messageattachment mstch) {
+		this.mstch = mstch;
+	}
 	public Employee getEmployee() {
 		return employee;
 	}

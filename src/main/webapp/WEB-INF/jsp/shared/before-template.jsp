@@ -91,6 +91,11 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
+    <script>
+    	$(function() {
+			
+		})
+    </script>
 
 </body></html>
 <div id="editPanel" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -100,13 +105,49 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">评论</h4>
+						<h4 class="modal-title" id="myModalLabel">邮件信息</h4>
 					</div>
 					<div class="modal-body">
-						<div class="form-group">
-                         <label for="txt_departmentname">部门名称</label>
-                        <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname" placeholder="部门名称">
-                     	</div>
+						 <table style="position: relative;">
+				                <tr style="margin: 10px;">
+				                  <td>发件人：</td>
+				                  <td id="CreatorId"></td>
+				                </tr>
+				                <tr>
+				                	<td style="height: 10px;"></td>
+				                	<td></td>
+				                </tr>
+				                <tr>
+				                  <td>标题：</td>
+				                  <td><input id="Title"type="text" class="input-medium search-query"></td>
+				                </tr>
+				                 <tr>
+				                	<td style="height: 10px;"></td>
+				                	<td></td>
+				                </tr>	
+				                <tr>
+				                  <td>内容：</td>
+				                  <td><textarea id="Content" name="Content" rows="3"></textarea></td>
+				                </tr>
+				                <tr>
+				                	<td style="height: 10px;"></td>
+				                	<td></td>
+				                </tr>
+				                <tr>
+				                  <td>重要度：</td>
+				                  <td style="width: 90%;">
+					                 <select name="Level">
+						              <option id="LEVEL">普通</option>
+						            </select>
+						    	  </td>
+				                </tr>
+				                <tr>
+				                  <td></td>
+				                  <td style="width: 90%;">
+					                 <a id="Reply" class="btn btn-primary" href="#">回复</a>
+						    	  </td>
+				                </tr>
+				            </table>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -114,10 +155,72 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			$(function () {
-				$(".table tbody tr").click(function(){
-					$("#editPanel").modal("show");
-				});
-			})
-		</script>
+		<div id="editPanel1" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">邮件信息</h4>
+					</div>
+					<div class="modal-body">
+						<form action="Roleupdate">
+						 	<table style="position: relative;">
+						 		<input name="id" type="hidden" value="" id="id"/>
+				                <tr style="margin: 10px;">
+				                  <td>发件人：</td>
+				                  <td><input name="name" value="" id="name"/></td>
+				                </tr>
+				                <tr style="margin: 10px;">
+				                  <td></td>
+				                  <td></td>
+				                </tr>
+				                <tr style="margin: 10px;">
+				                  <td></td>
+				                  <td><button class="btn btn-danger" type="submit">保存</button></td>
+				                </tr>
+				            </table>
+				        </form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="editPanel2" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">权限</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="rid"/>
+						<c:forEach var="fnull" items="${function }">
+						<div>
+							
+							<div style="padding: 10px;color: red;">${fnull.name }</div>
+							<c:forEach var="infunction" items="${IsNotfunction }">
+								<c:if test="${infunction.parentId==fnull.id }">
+									 <span><input class="functionid" type="checkbox"
+									<c:forEach var="frid" items="${functionRoleId }">
+				                			<c:if test="${infunction.id == frid.id}">
+							                   checked="checked"
+						                    </c:if>
+					                </c:forEach>
+					                 value="${infunction.id }">${infunction.name }</span>
+					            </c:if>
+			                </c:forEach>
+			            </div>
+						</c:forEach>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>

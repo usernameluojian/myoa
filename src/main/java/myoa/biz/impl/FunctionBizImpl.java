@@ -27,4 +27,16 @@ public class FunctionBizImpl implements FunctionBiz{
 		return fd.FunctionRoleId(RoleId);
 	}
 
+	@Override
+	public Function Functioisid(int id) {
+		// TODO Auto-generated method stub
+		return fd.Functioisid(id);
+	}
+
+	@Override
+	public List<Function> FunctionisNotNULL() {
+		// TODO Auto-generated method stub
+		return fd.FunctionisNotNULL();
+	}
+
 }

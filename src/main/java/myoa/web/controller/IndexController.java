@@ -28,7 +28,10 @@ public class IndexController {
 	private AnnouncementBiz annb;
 	
 	@RequestMapping(value="index",method=RequestMethod.GET)
-	public String index(Map<String,Object> model,HttpSession session,int id,int did){
+	public String index(Map<String,Object> model,HttpSession session){
+		Employee e = (Employee) session.getAttribute("user");
+		int id = e.getId();
+		int did = e.getDepartment().getId();
 		Employee user = (Employee) session.getAttribute("user");
 		model.put("fd", mb.findDuplicate(id));//获取个人邮箱信息其中为重复的邮件
 		model.put("fi", mb.findIsRead(id));	//获取个人邮箱信息其中为未读的邮件

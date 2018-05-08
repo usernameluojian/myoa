@@ -5,7 +5,7 @@
       <div id="side-nav">
         <ul id="nav">
         		<li>
-	                <a href="index?id=${user.id }">
+	                <a href="index">
 	                    <i class="iconfont"></i>
 	                    <cite>首页</cite>
 	                    <i class="iconfont nav_right"></i>
@@ -23,9 +23,9 @@
 	                		<c:forEach var="frid" items="${functionRoleId }">
 	                			<c:if test="${fnull.id == frid.parentId}">
 				                    <li>
-						                <a href="javascript:;">
+						                <a href="${frid.menuEntry}">
 						                    <i class="iconfont"></i>
-						                    <cite>${fnull.name }</cite>
+						                    <cite>${frid.name }</cite>
 						                    <i class="iconfont nav_right"></i>
 						                </a>
 						               </li>

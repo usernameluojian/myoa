@@ -14,4 +14,12 @@ public interface MessageDao {
 	public void Add(Message entity);
 	
 	public Message findId(int id);
+	
+	public Message finddescone();
+	
+	public List<Message> FindMulti(int ReceiverId,int page,int function);
+	
+	public int FindMultiCount(int ReceiverId,int function);
+	
+	public void update(Message entity);
 }

@@ -1,5 +1,7 @@
 package myoa.biz.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,12 @@ public class EmployeeBizImpl implements EmployeeBiz {
 	public Employee login(String string, String string2) {
 		// TODO Auto-generated method stub
 		return ed.login(string, string2);
+	}
+
+	@Override
+	public Employee findid(int id) {
+		// TODO Auto-generated method stub
+		return ed.findid(id);
 	}
 
 }

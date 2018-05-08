@@ -27,6 +27,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 	}
 	
+	//按id查询员工
+	public Employee findid(int id){
+		return (Employee) hibernateTemplate.find("from Employee where id = "+id+"").get(0);	
+	}
+	
 	//查询所有员工
 	public List<Employee> findAll(){
 		return (List<Employee>) hibernateTemplate.find("from Employee");
@@ -109,7 +114,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-beans.xml");
 		EmployeeDao standarddao = ctx.getBean(EmployeeDao.class);
-		System.out.println(standarddao.findcount("", -1, -1, 1,4));	
+		
 	}
 
 }
